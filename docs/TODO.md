@@ -1,6 +1,6 @@
-# EES TODO LIST [0 / 5]
+# EES TODO LIST [1 / 5]
 
-- [ ] Add the server and client scripts
+- [X] Add the server and client scripts
 - [ ] Create server script
 - [ ] Create client script
 - [ ] Create other scripts
