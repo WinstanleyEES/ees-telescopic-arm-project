@@ -6,4 +6,5 @@
 - [ ] Create other scripts
 - [ ] Create GUI for the user
 - [ ] Add native keyboard support
+- [ ] Create bootup script for raspberry pi
 - [ ] Think of more things todo
