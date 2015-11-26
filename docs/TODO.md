@@ -1,8 +1,8 @@
-# EES TODO LIST [3 / 6]
+# EES TODO LIST [4 / 9]
 
 - [X] Add the server and client scripts
 - [X] Create server script
-- [ ] Create client script
+- [X] Create client script
 - [ ] Create other scripts
 - [ ] Create GUI for the user
 - [ ] Add native keyboard support
