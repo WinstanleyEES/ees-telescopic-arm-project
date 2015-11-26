@@ -7,5 +7,5 @@
 - [ ] Create GUI for the user
 - [ ] Add native keyboard support
 - [X] Create bootup script for raspberry pi
-- [ ] *Fancify* code (make it more efficient and clean)
+- [ ] **Fancify** code (make it more efficient and clean)
 - [ ] Think of more things todo
