@@ -8,4 +8,5 @@
 - [ ] Add native keyboard support
 - [X] Create bootup script for raspberry pi
 - [ ] **Fancify** code (make it more efficient and clean)
+- [X] Comment code
 - [ ] Think of more things todo
