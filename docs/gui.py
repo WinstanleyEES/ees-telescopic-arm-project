@@ -1,17 +1,26 @@
 import pygame
 from pygame.locals import *
-from guiClass import Gui
+from guibase import Gui
+from guiobject import GuiObject
 
+# create the gui object
 ArmEnv = Gui(500,500,(250,250,250), "Telescopic Arm Gui", 30)
+
+# create the arm object
+ArmObj = GuiObject(20, 20, (0,250,0), 0, 0)
+
+# initialize the pygame clock
 clock = pygame.time.Clock()
+ArmEnv.update()
+
 
 while True :
 	for event in pygame.event.get() :
 		if event.type == pygame.QUIT :
 			ArmEnv.terminate()
-		elif event.type == pygame.MOUSEBUTTONDOWN :
-			print "Clicked"
 	
-	ArmEnv.render()
+	# render everything
+	ArmEnv.render([ArmObj])
 	
-	clock.tick(ArmEnv.fps)
+	# tick the fps
+	ArmEnv.clock.tick(ArmEnv.fps)

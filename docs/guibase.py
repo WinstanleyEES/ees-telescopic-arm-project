@@ -8,18 +8,25 @@ class Gui() :
 		self.colour = colour
 		self.title = title
 		self.fps = fps
+		self.clock = pygame.time.Clock()
 		
 		self.SCREEN = pygame.display.set_mode((width, height))
 		pygame.display.set_caption(title)
 		
 		self.background = pygame.Surface((width, height))
-		self.background.fill(colour)
+	
+	def set_bgcolour(self, colour) :
+		self.colour = colour
 		
 	def update(self) :
-		pass
+		self.background.fill(self.colour)
 		
-	def render(self) :
+	def render(self, objects) :
 		self.SCREEN.blit(self.background, (0, 0))
+		
+		for object in objects :
+			pygame.draw.rect(self.SCREEN, object.colour, (object.x, object.y, object.width, object.height))
+		
 		pygame.display.flip()
 		
 	def terminate(self) :
