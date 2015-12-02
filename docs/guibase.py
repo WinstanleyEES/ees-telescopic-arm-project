@@ -10,7 +10,7 @@ class Gui() :
 		self.fps = fps
 		self.clock = pygame.time.Clock()
 		
-		self.SCREEN = pygame.display.set_mode((width, height))
+		self.screen = pygame.display.set_mode((width, height))
 		pygame.display.set_caption(title)
 		
 		self.background = pygame.Surface((width, height))
@@ -18,14 +18,26 @@ class Gui() :
 	def set_bgcolour(self, colour) :
 		self.colour = colour
 		
+	def process_input(self) :
+		# getting all the pygame events
+		for event in pygame.event.get() :
+			# checking if the event is to quit pygame - then quit the program
+			if event.type == pygame.QUIT :
+				self.terminate()
+		
 	def update(self) :
 		self.background.fill(self.colour)
 		
-	def render(self, objects) :
-		self.SCREEN.blit(self.background, (0, 0))
+	def render(self, objects, strings) :
+		self.screen.blit(self.background, (0, 0))
 		
 		for object in objects :
-			pygame.draw.rect(self.SCREEN, object.colour, (object.x, object.y, object.width, object.height))
+			pygame.draw.rect(self.screen, object.colour, (object.x, object.y, object.width, object.height))
+		
+		if len(strings) > 0 :
+			for list in strings :
+				for string in list :
+					self.screen.blit(string[0], (string[1], string[2]))
 		
 		pygame.display.flip()
 		
