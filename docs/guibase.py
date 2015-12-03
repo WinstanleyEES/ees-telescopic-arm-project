@@ -3,17 +3,20 @@ import pygame
 
 class Gui() :
 	
-	def __init__(self, width, height, colour, title, fps) :
+	def __init__(self, width, height, colour, title, fps, icon) :
 		self.width = width
 		self.height = height
 		self.colour = colour
 		self.title = title
 		self.fps = fps
+		self.icon = icon
 		self.clock = pygame.time.Clock()
 		
-		self.screen = pygame.display.set_mode((width, height))
+		pygame.display.set_icon(icon)
 		pygame.display.set_caption(title)
 		
+		self.screen = pygame.display.set_mode((width, height))
+				
 		self.background = pygame.Surface((width, height))
 	
 	def set_bgcolour(self, colour) :
