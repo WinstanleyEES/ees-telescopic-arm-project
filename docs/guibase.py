@@ -1,3 +1,4 @@
+#!/usr/bin/python
 import pygame
 
 class Gui() :
