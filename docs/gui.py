@@ -1,5 +1,4 @@
 #!/usr/bin/python
-# -*- coding: latin-1 -*-
 # importing the modules and classes
 import pygame
 from pygame.locals import *
@@ -24,7 +23,7 @@ ArmEnv.update()
 ArmEnv.render([ArmObj, MenuBar], [])
 
 # Creating a static test text element that won't be recreated every frame
-TestText = ArmText.draw_text_line(["Testing Rendering Text ", "Two"], [(0,0,0),(25,30,150)], "left", 0, 520)
+TestText = ArmText.draw_text_line(["Testing Rendering Text ", "Two"], [(0,0,0),(25,30,150)], "centre", 0, 520, ArmEnv.screen)
 
 # creating the main while loop
 while True :
@@ -36,7 +35,7 @@ while True :
 	ArmTextData = ArmText.draw_text_line(["Rendering ", "Text ", "To ", "The ", "Screen "], [(0,0,0), (0,0,0), (0,0,0), (0,0,0), (210,40,70)], "left", 0, 10)
 	
 	# test string to show updating text every frame
-	ArmFPSData = ArmText.draw_text_line(["fps counter: ", str(round(ArmEnv.clock.get_fps(),2))], [(0,0,0),(25,130,50)], "left", 320, 10) 
+	ArmFPSData = ArmText.draw_text_line(["fps counter: ", "{:.2f}".format(round(ArmEnv.clock.get_fps(),2))], [(0,0,0),(25,130,50)], "right", 0, 10, ArmEnv.screen) 
 	
 	# all other code shinanigans goes here
 		#...
