@@ -8,7 +8,7 @@ class TextConstruct() :
 		self.length = 0
 		self.individual_strings = []
 
-	def draw_text_line(self, strings, colours, vertical_alignment, x, y, screen=None) :
+	def draw_text_line(self, strings, colours, vertical_alignment, x, y, padding, screen=None) :
 		self.individual_strings = []
 		self.textline = []
 		
@@ -24,7 +24,7 @@ class TextConstruct() :
 					c = 0
 					
 				string = (self.font.render((strings[s]), True, colours[c]))
-				self.textline.append([string, xpos, ypos])
+				self.textline.append([string, padding + xpos, ypos])
 				xpos += string.get_width()
 				
 		elif vertical_alignment == "centre" :
@@ -76,7 +76,7 @@ class TextConstruct() :
 			
 			for s in xrange(0, len(tmpstrings)) :
 				screenx -= tmpstrings[s].get_width()
-				self.textline.append([tmpstrings[s], screenx, ypos])
+				self.textline.append([tmpstrings[s], screenx - padding, ypos])
 			
 		else :
 			print "uh oh!"
