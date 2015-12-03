@@ -6,10 +6,12 @@ from guibase import Gui
 from guiobject import GuiObject
 from textconstruct import TextConstruct
 
+# initializing pygame
 pygame.init()
 
-# create the gui object
-ArmEnv = Gui(500,540,(250,250,250), "Telescopic Arm Gui", 30)
+# create the gui object - loading the icon image from the icon directory
+ArmIcon = pygame.image.load("icons\icon.png")
+ArmEnv = Gui(500,540,(250,250,250), "Telescopic Arm Gui", 30, ArmIcon)
 
 # create the arm object
 MenuBar = GuiObject(500, 40, (230,230,230), 0, 0, "lower")
@@ -23,7 +25,7 @@ ArmEnv.update()
 ArmEnv.render([ArmObj, MenuBar], [])
 
 # Creating a static test text element that won't be recreated every frame
-TestText = ArmText.draw_text_line(["Testing Rendering Text ", "Two"], [(0,0,0),(25,30,150)], "centre", 0, 520, ArmEnv.screen)
+TestText = ArmText.draw_text_line(["Testing Rendering Text ", "Two"], [(0,0,0),(25,30,150)], "centre", 0, 520, 0,ArmEnv.screen)
 
 # creating the main while loop
 while True :
@@ -32,10 +34,10 @@ while True :
 	ArmEnv.process_input()
 	
 	# updating the arm data for text display each frame
-	ArmTextData = ArmText.draw_text_line(["Rendering ", "Text ", "To ", "The ", "Screen "], [(0,0,0), (0,0,0), (0,0,0), (0,0,0), (210,40,70)], "left", 0, 10)
+	ArmTextData = ArmText.draw_text_line(["Rendering ", "Text ", "To ", "The ", "Screen "], [(0,0,0), (0,0,0), (0,0,0), (0,0,0), (210,40,70)], "left", 0, 10, 2)
 	
 	# test string to show updating text every frame
-	ArmFPSData = ArmText.draw_text_line(["fps counter: ", "{:.2f}".format(round(ArmEnv.clock.get_fps(),2))], [(0,0,0),(25,130,50)], "right", 0, 10, ArmEnv.screen) 
+	ArmFPSData = ArmText.draw_text_line(["fps counter: ", "{:.2f}".format(round(ArmEnv.clock.get_fps(),2))], [(0,0,0),(25,130,50)], "right", 0, 10, 2, ArmEnv.screen) 
 	
 	# all other code shinanigans goes here
 		#...
