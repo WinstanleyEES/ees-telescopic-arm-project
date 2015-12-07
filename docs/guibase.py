@@ -1,7 +1,6 @@
 #!/usr/bin/python
 # importing the pygame module
 import pygame
-from guiobject import GuiObject
 
 # The gui class that contains the functions for the gui object
 class Gui() :
@@ -82,3 +81,158 @@ class Gui() :
 	def terminate(self) :
 		# quitting pygame
 		pygame.quit()
+		
+# the main gui object class
+class GuiObject() :
+
+	# the init function sets the height, width, colour, x and y of the gui object
+	def __init__(self, width, height, colour, x, y, border) :
+		# setting the gui objects variables
+		self.width = width
+		self.height = height
+		self.colour = colour
+		self.x = x
+		self.y = y
+		self.border = border
+	
+	# the move function will allow the gui object to move by a specified x and y value
+	def move_increment(self, x, y) :
+		# setting the gui objects x to increment by the inputted x
+		self.x += x
+		# setting the gui objects y to increment by the inputted y
+		self.y += y
+		
+	# the move function will allow the gui object to move to a specified x and y value
+	def move_to(self, x, y) :
+		# setting the gui objects x to the inputted x
+		self.x = x
+		# setting the gui objects y to the inputted y
+		self.y = y
+
+# The textconstructor class that contains the functions for the gui text functions
+class TextConstruct() :
+
+	# the init function sets the font, size and colour of the text
+	def __init__(self, font, size, colour) :
+		self.font = pygame.font.SysFont(font, size)
+		self.colour = colour
+		self.length = 0
+		self.individual_strings = []
+
+	# the function that draws a multiple strings of text to the gui
+	def draw_text_line(self, strings, colours, vertical_alignment, x, y, padding, screen=None) :
+		self.individual_strings = []
+		self.textline = []
+		
+		# checking if the alignment is left
+		if vertical_alignment == "left" :
+			# setting the x and y positions to those pre-determined by the user
+			xpos = x
+			ypos = y
+			
+			# looping through the list of strings
+			for s in xrange(0, len(strings)) :
+				
+				# setting the colours to be the matching colour or one colour throughout
+				if len(colours) == len(strings) :
+					c = s
+				else :
+					c = 0
+				
+				# setting the temporary variable string to be a pygame object
+				string = (self.font.render((strings[s]), True, colours[c]))
+				# appending the string to the sentence array with the objects x and y positions
+				self.textline.append([string, padding + xpos, ypos])
+				# incrementing the xposition by the width of the current string
+				xpos += string.get_width()
+				
+		# checking if the alignment is centre	
+		elif vertical_alignment == "centre" :
+			# setting the total length to 0 and the x and y postitions to those pre-determined by the user
+			totallength = 0
+			xpos = x
+			ypos = y
+			
+			# storing the screens width and height to their respected temporary variables
+			screenx, screeny = screen.get_size()
+			# setting tmpstrings to be a blank array
+			tmpstrings = []
+			
+			# looping through the list of strings
+			for s in xrange(0, len(strings)) :
+				
+				# setting the colours to be the matching colour or one colour throughout
+				if len(colours) == len(strings) :
+					c = s
+				else :
+					c = 0
+					
+				# setting the temporary variable string to be a pygame object	
+				string = (self.font.render((strings[s]), True, colours[c]))
+				# appending the string to the temporary string array
+				tmpstrings.append(string)
+				# incrementing the total width variable by adding the length of the current string
+				totallength += string.get_width()
+				# incrementing the x position by the width of the current string
+				xpos += string.get_width()
+				
+			# setting the starting x to be half the width of the screen minus half the total length of the strings
+			startingx = (screenx / 2) - (xpos / 2)
+			#setting the x positon to the starting x position
+			xpos = startingx
+			
+			# looping through the list of temporary strings
+			for s in xrange(0, len(tmpstrings)) :
+			
+				# appending the string to the textline variable along with the x and y positions
+				self.textline.append([tmpstrings[s], xpos, ypos])
+				# incrementing the xposition by the width of the current string
+				xpos += tmpstrings[s].get_width()
+			
+		# checking if the alignment is right
+		elif vertical_alignment == "right" :
+			# setting the x and y positions to those pre-determined by the user
+			xpos = x
+			ypos = y
+			
+			# storing the screens width and height to their respected temporary variables
+			screenx, screeny = screen.get_size()
+			tmpstrings = []
+			
+			# setting the total length of the screen equal to the width of the screen
+			totallength = screenx
+			
+			# looping through the list of strings backwards
+			for s in xrange(len(strings) - 1, -1, -1) :
+				
+				# setting the colours to be the matching colour or one colour throughout
+				if len(colours) == len(strings) :
+					c = s
+				else :
+					c = 0
+				
+				# setting the temporary variable string to be a pygame object
+				string = (self.font.render((strings[s]), True, colours[c]))
+				# appending the string to the temporary string array
+				tmpstrings.append(string)
+				# negating the current strings width from the total length
+				totallength -= string.get_width()			
+			
+			# looping through the list of temporary strings
+			for s in xrange(0, len(tmpstrings)) :
+			
+				# negating the width of the current string from the screens width
+				screenx -= tmpstrings[s].get_width()
+				# appending the string to the textline variable along with the x and y positions 
+				self.textline.append([tmpstrings[s], screenx - padding, ypos])
+		
+		# printing out the error message
+		else :
+			print "uh oh!"
+		
+		# returning the textline array
+		return self.textline
+				
+	# the function that draws a single string of text to the gui - needs implementing
+	def draw_text_single(self) :
+		pass
