@@ -1,4 +1,4 @@
-# EES TODO LIST [6 / 14]
+# EES TODO LIST [6 / 15]
 
 - [X] Add the server and client scripts
 - [X] Create server script
@@ -9,6 +9,7 @@
 - [ ] Create the base class for the GUI (WIP)
 - [ ] Create the object class for the GUI (WIP)
 - [ ] Add native keyboard support
+- [ ] Create an icon
 - [X] Create bootup script for raspberry pi
 - [X] Create system so the raspberry pi can download future updates and new scripts
 - [ ] **Fancify** code (make it more efficient and clean)
