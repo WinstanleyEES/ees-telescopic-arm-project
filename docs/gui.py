@@ -2,9 +2,7 @@
 # importing the modules and classes
 import pygame
 from pygame.locals import *
-from guibase import Gui
-from guiobject import GuiObject
-from textconstruct import TextConstruct
+from guibase import *
 
 # initializing pygame
 pygame.init()
