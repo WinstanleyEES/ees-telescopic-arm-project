@@ -15,14 +15,15 @@ ArmEnv = Gui(500,540,(250,250,250), "Telescopic Arm Gui", 30, ArmIcon)
 
 # create the arm object
 MenuBar = GuiObject(500, 40, (230,230,230), 0, 0, "lower")
-ArmObj = GuiObject(20, 20, (0,0,0), 0, 40, "none")
+ArmObj = GuiObject(20, 20, (0,250,0), 0, 40, "none")
+ArmObj2 = GuiObject(20, 20, (250,0,0), 0, 80, "none")
 
 # create the text constructor
 ArmText = TextConstruct("monospace", 15, (0,0,0))
 
 # update and render everything for the first time - this allows the settings to initialize before the first frame is run
 ArmEnv.update()
-ArmEnv.render([ArmObj, MenuBar], [])
+ArmEnv.render([MenuBar, ArmObj, ArmObj2], [])
 
 # Creating a static test text element that won't be recreated every frame
 TestText = ArmText.draw_text_line(["Testing Rendering Text ", "Two"], [(0,0,0),(25,30,150)], "centre", 0, 520, 0,ArmEnv.screen)
@@ -31,7 +32,7 @@ TestText = ArmText.draw_text_line(["Testing Rendering Text ", "Two"], [(0,0,0),(
 while True :
 
 	# processing the pygame input
-	ArmEnv.process_input()
+	ArmEnv.process_input([ArmObj, ArmObj2])
 	
 	# updating the arm data for text display each frame
 	ArmTextData = ArmText.draw_text_line(["Rendering ", "Text ", "To ", "The ", "Screen "], [(0,0,0), (0,0,0), (0,0,0), (0,0,0), (210,40,70)], "left", 0, 10, 2)
@@ -46,7 +47,7 @@ while True :
 	ArmEnv.update()
 	
 	# render everything to the screen
-	ArmEnv.render([MenuBar, ArmObj], [ArmTextData,TestText,ArmFPSData])
+	ArmEnv.render([MenuBar, ArmObj, ArmObj2], [ArmTextData,TestText,ArmFPSData])
 	
 	# tick the fps
 	ArmEnv.clock.tick(ArmEnv.fps)

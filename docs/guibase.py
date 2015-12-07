@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # importing the pygame module
 import pygame
+from guiobject import GuiObject
 
 # The gui class that contains the functions for the gui object
 class Gui() :
@@ -31,14 +32,23 @@ class Gui() :
 		self.colour = colour
 	
 	# this function handles all of the pygame inputs and handles the event checking
-	def process_input(self) :
+	def process_input(self, objects) :	
 		# getting all the pygame events
 		for event in pygame.event.get() :
 			# checking if the event is to quit pygame - then quit the program
 			if event.type == pygame.QUIT :
 				# running the terminate command if the 'X' is pressed
 				self.terminate()
-	
+			elif event.type == pygame.KEYDOWN :
+				if event.key == pygame.K_RIGHT :
+					print "Right"
+					objects[0].move_to(480,40)
+					objects[1].move_increment(20,20)
+				elif event.key == pygame.K_LEFT :
+					print "Left"
+					objects[0].move_to(0,40)
+					objects[1].move_increment(-20,-20)
+					
 	# the update function updates all the variables but doesn't commit anything new to the gui
 	def update(self) :
 		# setting the background colour to the inputted colour
