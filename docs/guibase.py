@@ -39,14 +39,41 @@ class Gui() :
 				# running the terminate command if the 'X' is pressed
 				self.terminate()
 			elif event.type == pygame.KEYDOWN :
+				print objects[2].moveable
+				
 				if event.key == pygame.K_RIGHT :
-					print "Right"
-					objects[0].move_to(480,40)
-					objects[1].move_increment(20,20)
+					#print "Right"
+					#objects[0].move_to(480,40)
+					#objects[1].move_increment(20,20)
+					
+					objects[0].move_increment(20,0)
+					objects[1].move_increment(20,0)
+					objects[2].move_increment(20,0)
+					
+					objects[1].proximity(objects[2])
+					
 				elif event.key == pygame.K_LEFT :
-					print "Left"
-					objects[0].move_to(0,40)
-					objects[1].move_increment(-20,-20)
+					#print "Left"
+					#objects[0].move_to(0,40)
+					#objects[1].move_increment(-20,-20)
+					
+					objects[0].move_increment(-20,0)
+					objects[1].move_increment(-20,0)
+					objects[2].move_increment(-20,0)
+					
+					objects[1].proximity(objects[2])
+				
+				elif event.key == pygame.K_DOWN :
+					objects[1].extend(40)
+					objects[2].move_increment(0,40)
+					
+					objects[1].proximity(objects[2])
+					
+				elif event.key == pygame.K_UP :
+					objects[1].extend(-40)
+					objects[2].move_increment(0,-40)
+					
+					objects[1].proximity(objects[2])
 					
 	# the update function updates all the variables but doesn't commit anything new to the gui
 	def update(self) :
@@ -65,6 +92,8 @@ class Gui() :
 			for object in objects :
 				# drawing the object as a rectangle to the gui
 				pygame.draw.rect(self.screen, object.colour, (object.x, object.y, object.width, object.height))
+				if object.border == True :
+					pygame.draw.line(self.screen, object.border_colour, (object.x, object.height-object.border_thickness), (object.width, object.height-object.border_thickness), object.border_thickness)
 		
 		# rendering all the strings to the screen
 		# checking if strings need to be rendered
@@ -86,7 +115,7 @@ class Gui() :
 class GuiObject() :
 
 	# the init function sets the height, width, colour, x and y of the gui object
-	def __init__(self, width, height, colour, x, y, border) :
+	def __init__(self, width, height, colour, x, y, moveable, physics, ground, border=False, border_colour=None, border_thickness=0) :
 		# setting the gui objects variables
 		self.width = width
 		self.height = height
@@ -94,27 +123,58 @@ class GuiObject() :
 		self.x = x
 		self.y = y
 		self.border = border
+		self.border_colour = border_colour
+		self.border_thickness = border_thickness
+		self.moveable = moveable
+		self.physics = physics
+		self.ground = ground
+		self.attached = False
 	
 	# the move function will allow the gui object to move by a specified x and y value
 	def move_increment(self, x, y) :
-		# setting the gui objects x to increment by the inputted x
-		self.x += x
-		# setting the gui objects y to increment by the inputted y
-		self.y += y
+		if self.moveable :
+			# setting the gui objects x to increment by the inputted x
+			self.x += x
+			# setting the gui objects y to increment by the inputted y
+			self.y += y
 		
 	# the move function will allow the gui object to move to a specified x and y value
 	def move_to(self, x, y) :
-		# setting the gui objects x to the inputted x
-		self.x = x
-		# setting the gui objects y to the inputted y
-		self.y = y
+		if self.moveable :
+			# setting the gui objects x to the inputted x
+			self.x = x
+			# setting the gui objects y to the inputted y
+			self.y = y
+		
+	def extend(self, increment) :
+		self.height += increment
+		
+	def proximity(self, object_to_move) :
+		otc_y = self.height + self.y
+		otc_x = self.x - 17
+		print otc_x
+		#print object_to_move.y
+		
+		if otc_y == object_to_move.y and otc_x == object_to_move.x:
+			object_to_move.moveable = True
+		else :
+			object_to_move.moveable = False
+			
+		# print object_to_move.moveable
 
+	#def attach(self) :
+	#	if self.moveable :
+	#		self.attached = True
+		
+	#def gravity(self) :
+	#	
+		
 # The textconstructor class that contains the functions for the gui text functions
 class TextConstruct() :
 
 	# the init function sets the font, size and colour of the text
-	def __init__(self, font, size, colour) :
-		self.font = pygame.font.SysFont(font, size)
+	def __init__(self, font, size, colour, bold=False) :
+		self.font = pygame.font.SysFont(font, size, bold)
 		self.colour = colour
 		self.length = 0
 		self.individual_strings = []
