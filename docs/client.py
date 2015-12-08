@@ -25,7 +25,7 @@ LIGHTONZ = False
 LIGHTONT = False
 MAGSTATE = False
 
-# Setting the port that the client will connect to
+# Setting the ip that the client will connect to
 HOST = "192.168.43.141"
 # Setting the port that the client will connect to
 PORT = 3443
