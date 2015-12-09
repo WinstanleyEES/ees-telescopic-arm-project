@@ -8,7 +8,7 @@ from guibase import *
 pygame.init()
 
 # create the gui object - loading the icon image from the icon directory
-ArmIcon = pygame.image.load("icon.png")
+ArmIcon = pygame.image.load("icons/icon.png")
 ArmEnv = Gui(800,840,(236,238,240), "Telescopic Arm Gui", 30, ArmIcon)
 
 # create the arm object
