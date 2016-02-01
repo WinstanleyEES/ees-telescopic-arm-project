@@ -63,52 +63,52 @@ while True :
 					# Checking if the left thumb stick is pushed forwards
 					if Y <= -0.5 :
 						# Toggling which GPIO is outputting a high voltage and a low voltage
-						GPIO.output(27, GPIO.HIGH)
-						GPIO.output(10, GPIO.LOW)
+						#GPIO.output(27, GPIO.HIGH)
+						#GPIO.output(10, GPIO.LOW)
 					
 					# Checking if the left thumbstick is pulled back
 					elif Y >= 0.5 :
 						# Toggling which GPIO is outputting a high voltage and a low voltage
-						GPIO.output(10, GPIO.HIGH)
-						GPIO.output(27, GPIO.LOW)
+						#GPIO.output(10, GPIO.HIGH)
+						#GPIO.output(27, GPIO.LOW)
 					
 					# Otherwise setting both GPIO to emmit a low voltage
 					else :
-						GPIO.output(27, GPIO.LOW)
-						GPIO.output(10, GPIO.LOW)
+						#GPIO.output(27, GPIO.LOW)
+						#GPIO.output(10, GPIO.LOW)
 
 					# Checking if the right thumb stick is pushed forwards
 					if Z <= -0.5 :
 						# Toggling which GPIO is outputting a high voltage and a low voltage
-						GPIO.output(17, GPIO.HIGH)
-						GPIO.output(9, GPIO.LOW)
+						#GPIO.output(17, GPIO.HIGH)
+						#GPIO.output(9, GPIO.LOW)
 					
 					# Checking if the right thumbstick is pulled back
 					elif Z >= 0.5 :
 						# Toggling which GPIO is outputting a high voltage and a low voltage
-						GPIO.output(9, GPIO.HIGH)
-						GPIO.output(17, GPIO.LOW)
+						#GPIO.output(9, GPIO.HIGH)
+						#GPIO.output(17, GPIO.LOW)
 					
 					# Otherwise setting both GPIO to emmit a low voltage
 					else :
-						GPIO.output(17, GPIO.LOW)
-						GPIO.output(9, GPIO.LOW)
+						#GPIO.output(17, GPIO.LOW)
+						#GPIO.output(9, GPIO.LOW)
 
 					# Checking if the trigger is pressed and that the magnet isn't already turned on
 					if T <= -0.5 and T >= -1.0 and MAGSTATE == False :
 						# Toggling which GPIO is outputting a high voltage and a low voltage
-						GPIO.output(22, GPIO.HIGH)
-						GPIO.output(11, GPIO.LOW)
+						#GPIO.output(22, GPIO.HIGH)
+						#GPIO.output(11, GPIO.LOW)
 						# Setting the magnet to on
-						MAGSTATE = True
+						#MAGSTATE = True
 					
 					# Checking if the trigger is pressed and the magnet is turned on
 					elif T <= -0.5 and T >= -1.0 and MAGSTATE == True :
 						# Toggling which GPIO is outputting a high voltage and a low voltage
-						GPIO.output(22, GPIO.LOW)
-						GPIO.output(11, GPIO.HIGH)
+						#GPIO.output(22, GPIO.LOW)
+						#GPIO.output(11, GPIO.HIGH)
 						# Setting the magnet to off
-						MAGSTATE = False
+						#MAGSTATE = False
 				
 				# Otherwise cleaning up the GPIO pins and breaking out of the loop					
 				else :
