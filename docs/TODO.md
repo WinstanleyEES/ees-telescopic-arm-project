@@ -8,7 +8,7 @@
 - [ ] Create text constructor class for the GUI (WIP)
 - [ ] Create the base class for the GUI (WIP)
 - [ ] Create the object class for the GUI (WIP)
-- [ ] Add native keyboard support
+- [ ] ~~Add native keyboard support~~
 - [ ] Create an actual icon
 - [X] Create bootup script for raspberry pi
 - [X] Create system so the raspberry pi can download future updates and new scripts
