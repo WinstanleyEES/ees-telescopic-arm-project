@@ -1,4 +1,4 @@
-# EES TODO LIST [6 / 15]
+# EES TODO LIST [6 / 16]
 
 - [X] Add the server and client scripts
 - [X] Create server script
@@ -14,4 +14,5 @@
 - [X] Create system so the raspberry pi can download future updates and new scripts
 - [ ] **Fancify** code (make it more efficient and clean)
 - [X] Comment code
+- [ ] Convert batch failsafe script to linux format (.sh?)
 - [ ] Think of more things todo
