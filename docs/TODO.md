@@ -1,13 +1,13 @@
-# EES TODO LIST [6 / 16]
+# EES TODO LIST [10 / 18]
 
 - [X] Add the server and client scripts
 - [X] Create server script
 - [X] Create client script
 - [ ] Create other scripts
-- [ ] Create GUI for the user (WIP)
-- [ ] Create text constructor class for the GUI (WIP)
-- [ ] Create the base class for the GUI (WIP)
-- [ ] Create the object class for the GUI (WIP)
+- [X] Create GUI for the user (WIP)
+- [X] Create text constructor class for the GUI (WIP)
+- [X] Create the base class for the GUI (WIP)
+- [X] Create the object class for the GUI (WIP)
 - [ ] ~~Add native keyboard support~~
 - [ ] Create an actual icon
 - [X] Create bootup script for raspberry pi
@@ -15,4 +15,6 @@
 - [ ] **Fancify** code (make it more efficient and clean)
 - [X] Comment code
 - [ ] Convert batch failsafe script to linux format (.sh?)
+- [ ] Mount the electronics to a board
+- [ ] Calculate the current extension and rotation of the linar actuator and stepper motor
 - [ ] Think of more things todo
