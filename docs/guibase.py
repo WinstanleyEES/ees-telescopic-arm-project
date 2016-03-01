@@ -288,7 +288,7 @@ class TextConstruct() :
 		
 		# printing out the error message
 		else :
-			print "uh oh!"
+			print "Something has gone wrong!"
 		
 		# returning the textline array
 		return self.textline
