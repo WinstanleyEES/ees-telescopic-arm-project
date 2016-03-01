@@ -17,4 +17,5 @@
 - [ ] Convert batch failsafe script to linux format (.sh?)
 - [ ] Mount the electronics to a board
 - [ ] Calculate the current extension and rotation of the linar actuator and stepper motor
+- [ ] Transfer new code unsynced code from the pi / laptop to github
 - [ ] Think of more things todo
